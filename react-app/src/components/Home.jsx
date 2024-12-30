@@ -11,7 +11,7 @@ function Home() {
   const [products, setProducts] = useState([]);
   const [cproducts, setCproducts] = useState([]);
   const [search, setSearch] = useState('');
-  const [issearch, setisSearch] = useState('false');
+  const [issearch, setisSearch] = useState(false);
 
   useEffect(() => {
     const url = 'http://localhost:4000/get-products';
@@ -19,7 +19,7 @@ function Home() {
       .then((res) => {
         if (res.data.products) {
           setProducts(res.data.products);
-          setCproducts(res.data.products);  // Set initial products to cproducts
+          // setCproducts(res.data.products);  // Set initial products to cproducts
         //   alert("Products fetched!");
         }
       })
@@ -52,7 +52,7 @@ function Home() {
 axios.get(url)
   .then((res) => {
  setCproducts(res.data.products);
- setSearch('true');
+ setisSearch(true);
    
   })
   .catch((err) => {
@@ -75,7 +75,7 @@ axios.get(url)
 
 const handleLike=(productId,e)=>{
   e.stopPropagation();
-  const userId=localStorage.getItem('userId');
+  let userId=localStorage.getItem('userId');
 if(!userId){
   alert('please login first');
   return
@@ -119,8 +119,8 @@ const handleProduct=(id)=>{
                     cproducts.map((item, index) => {
 
                         return (
-                            <div onClick={()=>handleProduct(item._id)} key={item._id} className="card m-3 ">
-                                 <div onClick={(e)=>handleLike(item._id,e)} className="icon-con">
+                            <div  key={item._id} className="card m-3 ">
+                                 <div onClick={()=>handleLike(item._id)} className="icon-con">
                             <   FaHeart  className="icons" /> 
                             </div>
                                 <img width="250px" height="150px" src={'http://localhost:4000/' + item.pimage} />
@@ -140,7 +140,7 @@ const handleProduct=(id)=>{
 
                         return (
                           <div onClick={()=>handleProduct(item._id)} key={item._id} className="card m-3 ">
-                            <div onClick={()=>handleLike(item._id)} className="icon-con">
+                            <div onClick={(e)=>handleLike(item._id,e)} className="icon-con">
                             <   FaHeart  className="icons" /> 
                             </div>
                           

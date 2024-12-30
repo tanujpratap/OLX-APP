@@ -19,7 +19,7 @@ function LikedProducts() {
       .then((res) => {
         if (res.data.products) {
           setProducts(res.data.products);
-          setCproducts(res.data.products);  // Set initial products to cproducts
+       //   setCproducts(res.data.products);  // Set initial products to cproducts
         //   alert("Products fetched!");
         }
       })
@@ -62,7 +62,7 @@ function LikedProducts() {
 
 const handleLike=(productId)=>{
   const userId=localStorage.getItem('userId');
-console.log('userId','productId',productId,userId);
+
 const url = 'http://localhost:4000/like-product';
 const data={userId,productId}
 axios.post(url,data)
