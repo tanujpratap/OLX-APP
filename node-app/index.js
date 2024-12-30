@@ -28,7 +28,7 @@ const port=4000;
 const mongoose = require('mongoose');
 const { type } = require('os');
 
-mongoose.connect('mongodb://localhost:27017/test'
+mongoose.connect('mongodb+srv://naimu:naimu123@cluster0.t6uhb.mongodb.net/?retryWrites=true&w=majority'
     );
 
 
